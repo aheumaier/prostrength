@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Workout sets</h1>
+
+<div id="workout_sets">
+  <% @workout_sets.each do |workout_set| %>
+    <%= render workout_set %>
+    <p>
+      <%= link_to "Show this workout set", workout_set %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New workout set", new_workout_set_path %>

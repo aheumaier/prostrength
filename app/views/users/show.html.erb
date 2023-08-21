@@ -1,0 +1,26 @@
+<h1 class="text-3xl font-bold underline">
+  My Profile !
+</h1>
+
+<table class="table">
+  <theaders>
+    <th>
+      Last Active Time
+    </th>
+    <th>
+      Email 
+    </th>
+  </theaders>
+  <tbody>
+    <tr>
+      <td><%= current_user.last_sign_in_at %></td>
+      <td><%= current_user.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="container-fluid bg-light">
+  <!-- Content here -->
+
+  <%= current_user.profile %>
+</div>

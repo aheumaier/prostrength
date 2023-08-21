@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prostrength</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag  "application", "jquery", "data-turbo-track": "reload", defer: true  %>
+    <%= javascript_importmap_tags %>
+
+  </head>
+  <body>
+
+    <header class="p-3 mb-3 border-bottom">
+      <%= render 'layouts/navigation' %>
+    </header>
+
+    <div class="container text-left">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <%= render 'layouts/messages'%>
+          <%= yield %>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<p style="color: green"><%= notice %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <%= render @workout %>
+    </tr>
+  </tbody>
+</table>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Exercise</th>
+      <th>Weight(kg)</th>
+      <th>Repetitions</th>
+      <th>Tempo</th>
+      <th>Pause</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workout.workout_sets.each do |set| %>
+      <tr>
+        <td><%= set.exercise.title %></td>
+        <td><%= set.lift.weight %></td>
+        <td><%= set.repetition.count %></td>
+        <td><%= set.tempo.duration %></td>
+        <td><%= set.pause.length %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+<br>
+
+<div>
+  <%= link_to "Edit this workout", edit_workout_path(@workout) %> |
+  <%= link_to "Back to workouts", workouts_path %> |
+  <%= button_to "Destroy this workout", @workout, method: :delete %>
+</div>

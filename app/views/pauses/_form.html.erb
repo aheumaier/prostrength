@@ -1,0 +1,22 @@
+<%= form_with(model: pause) do |form| %>
+  <% if pause.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pause.errors.count, "error") %> prohibited this pause from being saved:</h2>
+
+      <ul>
+        <% pause.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :length, style: "display: block" %>
+    <%= form.number_field :length %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

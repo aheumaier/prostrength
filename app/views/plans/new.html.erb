@@ -1,0 +1,36 @@
+<h1>New plan</h1>
+
+<%= form_with(model: @plan) do |form| %>
+  <% if @plan.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+      <ul>
+        <% @plan.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render "form", f: form %>
+
+  <br>
+
+  <h2>Sessions</h2>
+
+  <div id="traininPlans">
+    <div class="training-sessions">
+      <%= form.fields_for :training_sessions do |training_session_form| %>
+        <%= render "training_session_fields", f: training_session_form %>
+      <% end %>
+    </div>
+    <div class='links'>
+      <%= link_to_add_association "add new Session", form, :training_sessions, data: {association_insertion_node: '.training-sessions', association_insertion_method: :append} %>
+    </div>
+
+    <br>
+
+    <div>
+      <%= link_to "Back to plans", plans_path %>
+    </div>
+  <% end %>

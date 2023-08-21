@@ -1,0 +1,33 @@
+<div id="<%= dom_id plan %>">
+  <p>
+    <strong>Title:</strong>
+    <%= plan.title %>
+  </p>
+
+  <p>
+    <strong>Start:</strong>
+    <%= plan.start %>
+    | 
+    <strong>End:</strong>
+    <%= plan.end %>
+  </p>
+
+  <table class="table">
+    <% plan.workouts.each do |workout| %>
+
+      <tbody>
+        <tr>
+          <td>
+            <%= workout.title %>
+          </td>
+          <td>
+            <%= workout.notes %>
+          </td>
+          <td>
+            <%= workout.scheduled_at %>
+          </td>
+        </tr>
+      </tbody>
+    <% end%>
+  </table>
+</div>

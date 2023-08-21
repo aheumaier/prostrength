@@ -1,0 +1,36 @@
+<h1>Editing workout</h1>
+
+<%= form_with(model: @workout) do |form| %>
+
+  <% if @workout.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
+      <ul>
+        <% @workout.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render "form", f: form %>
+
+  <h2>WorkoutSets</h2>
+
+  <div id="workoutSets">
+    <div class="workout-sets">
+      <%= form.fields_for :workout_sets do |workout_set_form| %>
+        <%= render "workout_set_fields", f: workout_set_form %>
+      <% end %>
+    </div>
+    <div class='links'>
+      <%= link_to_add_association "add new Set", form, :workout_sets, data: {association_insertion_node: '.workout-sets', association_insertion_method: :append} %>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <%= link_to "Show this workout", @workout %> | <%= link_to "Back to workouts", workouts_path %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Exercises</h1>
+
+<div id="exercises">
+  <table class="table">
+    <theaders>
+      <th>
+        Name
+      </th>
+      <th>
+        Description 
+      </th>
+      <th>
+        Actions 
+      </th>
+    </theaders>
+    <tbody>
+      <% @exercises.each do |exercise| %>
+        <tr>
+          <td><%= exercise.title%></td>
+          <td><%= exercise.notes %></td>
+          <td><%= link_to "Show", exercise %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New exercise", new_exercise_path %>

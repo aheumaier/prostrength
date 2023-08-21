@@ -1,0 +1,21 @@
+<h1> Coaches </h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  
+  <% @users.each do |user| %>
+    
+    <div class="col">    
+        <div class="card" style="width: 18rem;">
+          <img src="https://jimdo-storage.freetls.fastly.net/image/245116938/ba6f12a9-8caf-492d-9119-cacb2386b484.jpg?format=pjpg&quality=80,90&auto=webp&disable=upscale&width=1707&height=2560" class="card-img-top" alt="Picture of <%= user.email %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= user.email %></h5>
+            <p class="card-text">Hey, ich bin Felix. Regelmäßiger Sport, nährstoffreiches Essen und ein aktiver Lifestyle bestimmen einen Großteil meines Lebens. Zu sehen, was der eigene Körper leisten kann, sobald man Zeit und Bewusstsein in seine Gesundheit investiert, ist das, wofür ich brenne. Und hierbei unterstütze ich Menschen seit über 10 Jahren.</p>
+            <a href="/users/<%= user.id %>" class="btn btn-primary">Book Me</a>
+          </div>
+      </div>     
+    </div>
+
+    <% end %>
+ 
+  </div>  
+</div>

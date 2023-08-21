@@ -1,0 +1,33 @@
+<div class="nested-fields">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      </tr>
+    </thead>
+    <tbody >
+      <td>
+        <%= f.label :exercise_id, style: "display: block" %>
+        <%= f.collection_select :exercise_id, Exercise.all, :id, :title %>
+      </td>
+      <td>
+        <%= f.label :lift_id, style: "display: block" %>
+        <%= f.collection_select :lift_id, Lift.all, :id, :weight %>
+      </td>
+      <td>
+        <%= f.label :repetition_id, style: "display: block" %>
+        <%= f.collection_select :repetition_id, Repetition.all, :id, :count %>
+      </td>
+      <td>
+        <%= f.label :tempo_id, style: "display: block" %>
+        <%= f.collection_select :tempo_id, Tempo.all, :id, :duration %>
+      </td>
+      <td>
+        <%= f.label :pause_id, style: "display: block" %>
+        <%= f.collection_select :pause_id, Pause.all, :id, :length %>
+      </td>
+      <td>
+        <%= link_to_remove_association "Delete", f %>
+      </td>
+    </tbody>
+  </table>
+</div>

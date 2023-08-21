@@ -1,0 +1,22 @@
+<%= form_with(model: repetition) do |form| %>
+  <% if repetition.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(repetition.errors.count, "error") %> prohibited this repetition from being saved:</h2>
+
+      <ul>
+        <% repetition.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :count, style: "display: block" %>
+    <%= form.number_field :count %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
