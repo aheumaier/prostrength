@@ -2,7 +2,6 @@ class TrainingSessionsController < ApplicationController
   before_action :set_training_session, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
-  end
   # GET /training_sessions or /training_sessions.json
   def index
     @training_sessions = TrainingSession.all
