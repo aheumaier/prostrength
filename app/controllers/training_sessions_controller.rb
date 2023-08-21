@@ -67,6 +67,6 @@ class TrainingSessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def training_session_params
-      params.require(:training_session).permit(:workout_id: [], :plan_id)
+      params.require(:training_session).permit(workout_id: [], :plan_id)
     end
 end
