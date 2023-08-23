@@ -12,7 +12,6 @@
         Description 
       </th>
       <th>
-        Actions 
       </th>
     </theaders>
     <tbody>
@@ -20,11 +19,16 @@
         <tr>
           <td><%= exercise.title%></td>
           <td><%= exercise.notes %></td>
-          <td><%= link_to "Show", exercise %></td>
+          <td>
+            <%= link_to '<i class="bi bi-eye"></i>'.html_safe, exercise %>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 
-<%= link_to "New exercise", new_exercise_path %>
+<div class="btn btn-outline-primary">
+  <i class="bi bi-plus" aria-hidden="true"></i>
+  <%= link_to "New Exercise", new_exercise_path,  :class => "btn" %>
+</div>

@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <table class="table">
   <thead>
     <tr>
@@ -41,7 +39,9 @@
 <br>
 
 <div>
-  <%= link_to "Edit this workout", edit_workout_path(@workout) %> |
-  <%= link_to "Back to workouts", workouts_path %> |
-  <%= button_to "Destroy this workout", @workout, method: :delete %>
+  <%= link_to "Edit", edit_workout_path(@workout), :class => "btn btn-outline-primary" %>
+  <%= link_to "Back", workouts_path, :class => "btn btn-outline-primary"%>
+
 </div>
+<br>
+<%= button_to "Delete", @workout, method: :delete, :class => "btn btn-danger" %>

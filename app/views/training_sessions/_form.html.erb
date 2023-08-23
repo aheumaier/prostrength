@@ -13,12 +13,22 @@
 
   <div>
     <%= form.label :workout_id, style: "display: block" %>
-    <%= form.text_field :workout_id %>
+    <%= form.collection_select :workout_id, Workout.all, :id, :title %>
   </div>
 
   <div>
     <%= form.label :plan_id, style: "display: block" %>
-    <%= form.text_field :plan_id %>
+    <%= form.collection_select :plan_id, Plan.all, :id, :title %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.collection_select :user_id, User.all, :id, :username %>
+  </div>
+
+  <div>
+    <%= form.label :scheduled_at, style: "display: block" %>
+    <%= form.datetime_select :start_time %>
   </div>
 
   <div>

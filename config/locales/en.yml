@@ -31,3 +31,15 @@
 
 en:
   hello: "Hello world"
+
+
+en:
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    Woche: week
+de:
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    week: Woche

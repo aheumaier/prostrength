@@ -30,7 +30,7 @@
             <%= plan.workouts.count %>
           </td>
           <td>
-            <%= link_to "Show", plan %>
+            <%= link_to '<i class="bi bi-eye"></i>'.html_safe, plan %>
           </td>
         </tr>
       <% end %>
@@ -38,6 +38,7 @@
   </table>
 </div>
 <br>
-<button type="button" class="btn btn-outline-dark">
-  <%= link_to "New Plan", new_plan_path %>
-</button>
+
+<div class="btn btn-outline-primary">
+  <%= link_to 'New Plan', new_plan_path(@plan), :class => "btn" %>
+</div>

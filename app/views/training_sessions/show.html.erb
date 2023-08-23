@@ -1,7 +1,30 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @training_session %>
 
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Exercise</th>
+      <th>Weight(kg)</th>
+      <th>Repetitions</th>
+      <th>Tempo</th>
+      <th>Pause</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workout.workout_sets.each do |set| %>
+      <tr>
+        <td><%= set.exercise.title %></td>
+        <td><%= set.lift.weight %></td>
+        <td><%= set.repetition.count %></td>
+        <td><%= set.tempo.duration %></td>
+        <td><%= set.pause.length %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+<br>
 <div>
   <%= link_to "Edit this training session", edit_training_session_path(@training_session) %> |
   <%= link_to "Back to training sessions", training_sessions_path %>

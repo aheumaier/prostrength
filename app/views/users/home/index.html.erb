@@ -1,0 +1,24 @@
+<div id="trainings">
+
+  <h1> Training Schedule  </h1>
+  <br>
+  <%= week_calendar(events: @trainings ) do |date, trainings| %>
+    <%= date.to_formatted_s(:short) %>
+
+    <% trainings.each do |tr| %>
+      <div>
+        <b>
+          <%= link_to tr.workout.title, training_session_path(tr) %>
+        </b>
+      </div>
+    <% end %>
+
+  <% end %>
+
+  <br>
+
+  <div class="btn btn-outline-primary">
+    <i class="bi bi-plus" aria-hidden="true"></i>
+    <%= link_to "New Training", new_training_session_path,  :class => "btn" %>
+  </div>
+</div>

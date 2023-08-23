@@ -1,5 +1,5 @@
 class TrainingSessionsController < ApplicationController
-  before_action :set_training_session, only: %i[ show edit update destroy ]
+  before_action :set_training_session, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   # GET /training_sessions or /training_sessions.json
@@ -9,6 +9,7 @@ class TrainingSessionsController < ApplicationController
 
   # GET /training_sessions/1 or /training_sessions/1.json
   def show
+    @workout = @training_session.workout
   end
 
   # GET /training_sessions/new
@@ -17,8 +18,7 @@ class TrainingSessionsController < ApplicationController
   end
 
   # GET /training_sessions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /training_sessions or /training_sessions.json
   def create
@@ -26,7 +26,9 @@ class TrainingSessionsController < ApplicationController
 
     respond_to do |format|
       if @training_session.save
-        format.html { redirect_to training_session_url(@training_session), notice: "Training session was successfully created." }
+        format.html do
+          redirect_to training_session_url(@training_session), notice: 'Training session was successfully created.'
+        end
         format.json { render :show, status: :created, location: @training_session }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +41,9 @@ class TrainingSessionsController < ApplicationController
   def update
     respond_to do |format|
       if @training_session.update(training_session_params)
-        format.html { redirect_to training_session_url(@training_session), notice: "Training session was successfully updated." }
+        format.html do
+          redirect_to training_session_url(@training_session), notice: 'Training session was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @training_session }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,19 +57,20 @@ class TrainingSessionsController < ApplicationController
     @training_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to training_sessions_url, notice: "Training session was successfully destroyed." }
+      format.html { redirect_to training_sessions_url, notice: 'Training session was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_training_session
-      @training_session = TrainingSession.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def training_session_params
-      params.require(:training_session).permit(:plan_id, workout_id: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_training_session
+    @training_session = TrainingSession.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def training_session_params
+    params.require(:training_session).permit(:plan_id, workout_id: [])
+  end
 end

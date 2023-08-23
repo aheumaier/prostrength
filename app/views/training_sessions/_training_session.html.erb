@@ -1,12 +1,8 @@
 <div id="<%= dom_id training_session %>">
+  <H2>
+    <%= training_session.workout.title %>
+  </H2>
   <p>
-    <strong>Workout:</strong>
-    <%= training_session.workout_id %>
+    <%= training_session.workout.created_at.to_formatted_s(:short) %>, Part of <%= training_session.plan.title %>
   </p>
-
-  <p>
-    <strong>Plan:</strong>
-    <%= training_session.plan_id %>
-  </p>
-
 </div>
