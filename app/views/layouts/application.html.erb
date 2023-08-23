@@ -16,21 +16,16 @@
     <header class="p-3 mb-3 border-bottom">
       <%= render 'layouts/navigation' %>
     </header>
-    <main>
-      <div class="container text-left">
-        <div class="row">
 
-          <div class="col-sm">
-            <%= render 'layouts/messages'%>
-            <%= yield %>
-          </div>
-
+    <div class="container text-left">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <%= render 'layouts/messages'%>
+          <%= yield %>
         </div>
       </div>
-
+      <div class="col-1"></div>
     </div>
-  </main>
-  <footer>
-  </footer>
-</body>
+  </body>
 </html>
