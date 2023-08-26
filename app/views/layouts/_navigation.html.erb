@@ -1,14 +1,9 @@
 <%# navigation styled for Bootstrap 5.0 %>
 
 <% if user_signed_in? %>
-  <%= render "layouts/sidebar_nav"%>
+  <%= render "layouts/sidebar_nav_user_auth"%>
 <% elsif admin_signed_in? %>
-  <%= render "layouts/sidebar_nav"%>
+  <%= render "layouts/sidebar_nav_admin_auth"%>
 <% else %>
-  <div class="text-end ms-auto">
-    <form class="">
-      <a class="btn btn-outline-success" href="/users/sign_up">Become member</a>
-      <a class="btn btn-outline-primary mr-2" href="/users/sign_in">Login</a>
-    </form>
-  </div>
+  <%= render "layouts/navbar_landing" %>
 <% end %>
