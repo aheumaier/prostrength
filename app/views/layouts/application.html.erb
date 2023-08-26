@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Prostrength</title>
+    <title>ProStrength</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,20 +12,17 @@
 
   </head>
   <body>
-
-    <header class="p-3 mb-3 border-bottom">
-      <%= render 'layouts/navigation' %>
-    </header>
-
-    <div class="container text-left">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
-          <%= render 'layouts/messages'%>
+
+        <%= render "layouts/navigation" %>
+
+        <div class="col-sm p-3 min-vh-100">
+          <%= render "layouts/messages" %>
           <%= yield %>
         </div>
+
       </div>
-      <div class="col-1"></div>
     </div>
   </body>
 </html>

@@ -1,22 +1,14 @@
 <%# navigation styled for Bootstrap 5.0 %>
 
-<div class="container">
-  <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-    <a class="navbar-brand" href="/">
-      <h3>ProStrength</h3>
-    </a>
-
-    <% if user_signed_in? %>
-      <%= render 'layouts/nav_links_for_user_auth' %>
-    <% elsif admin_signed_in? %>
-      <%= render 'layouts/nav_links_for_admin_auth' %>
-    <% else %>
-      <div class="text-end ms-auto">
-        <form class="">
-          <a class="btn btn-outline-success" href="/users/sign_up">Become member</a>
-          <a class="btn btn-outline-primary mr-2" href="/users/sign_in">Login</a>
-        </form>
-      </div>
-    <% end %>
+<% if user_signed_in? %>
+  <%= render "layouts/sidebar_nav"%>
+<% elsif admin_signed_in? %>
+  <%= render "layouts/sidebar_nav"%>
+<% else %>
+  <div class="text-end ms-auto">
+    <form class="">
+      <a class="btn btn-outline-success" href="/users/sign_up">Become member</a>
+      <a class="btn btn-outline-primary mr-2" href="/users/sign_in">Login</a>
+    </form>
   </div>
-</div>
+<% end %>
