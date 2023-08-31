@@ -2,9 +2,6 @@
 
 <%= render "form", training_session: @training_session %>
 
-<br>
-
-<div>
-  <%= link_to "Show this training session", @training_session %> |
-  <%= link_to "Back to training sessions", training_sessions_path %>
+<div class="float-end">
+  <%= link_to '<i class="bi bi-arrow-return-left"></i>'.html_safe, training_sessions_path, :class => "btn btn-outline-primary"%>
 </div>

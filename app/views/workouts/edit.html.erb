@@ -18,19 +18,18 @@
   <h2>WorkoutSets</h2>
 
   <div id="workoutSets">
+
     <div class="workout-sets">
       <%= form.fields_for :workout_sets do |workout_set_form| %>
         <%= render "workout_set_fields", f: workout_set_form %>
       <% end %>
     </div>
-    <div class='links'>
-      <%= link_to_add_association "add new Set", form, :workout_sets, data: {association_insertion_node: '.workout-sets', association_insertion_method: :append} %>
-    </div>
+
+    <%= link_to_add_association 'ADD', form, :workout_sets, data: {association_insertion_node: '.workout-sets', association_insertion_method: :append} %>
+
   </div>
 
-  <br>
-
-  <div>
-    <%= link_to "Show this workout", @workout %> | <%= link_to "Back to workouts", workouts_path %>
+  <div class="float-end">
+    <%= link_to '<i class="bi bi-arrow-return-left"></i>'.html_safe, workouts_path, :class => "btn btn-outline-primary"%>
   </div>
 <% end %>

@@ -1,8 +1,14 @@
-<%= render @training_session %>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @training_session.workout.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @training_session.workout.created_at %></h6>
+    <p class="card-text"><%= @training_session.plan.title %></p>
+  </div>
+</div>
 
 <br>
 <table class="table">
-  <thead>
+  <thead class="table-dark">
     <tr>
       <th>Exercise</th>
       <th>Weight(kg)</th>
@@ -25,9 +31,13 @@
 
 </table>
 <br>
-<div>
-  <%= link_to "Edit this training session", edit_training_session_path(@training_session) %> |
-  <%= link_to "Back to training sessions", training_sessions_path %>
 
-  <%= button_to "Destroy this training session", @training_session, method: :delete %>
+<div class="float-end">
+  <%= link_to '<i class="bi bi-pencil-square"></i>'.html_safe, edit_training_session_path(@training_session), :class => "btn btn-outline-primary" %>
+  <%= link_to '<i class="bi bi-arrow-return-left"></i>'.html_safe, training_sessions_path, :class => "btn btn-outline-primary"%>
+
+</div>
+
+<div class="float-start">
+  <%= button_to "Delete", @training_session, method: :delete, :class => "btn btn-danger" %>
 </div>

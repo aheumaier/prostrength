@@ -7,7 +7,13 @@
     <tbody >
       <td>
         <%= f.label :exercise_id, style: "display: block" %>
-        <%= f.collection_select :exercise_id, Exercise.all, :id, :title %>
+
+        <%= f.text_field :exercise_id, list: 'excercise-name' %>
+        <datalist id="excercise-name">
+          <% Exercise.all.each do |exercise| %>
+            <option value="<%= exercise.title %>"></option>
+          <% end %>
+        </datalist>
       </td>
       <td>
         <%= f.label :lift_id, style: "display: block" %>
@@ -26,7 +32,7 @@
         <%= f.collection_select :pause_id, Pause.all, :id, :length %>
       </td>
       <td>
-        <%= link_to_remove_association "Delete", f %>
+        <%= link_to_remove_association '<i class="bi bi-dash-circle-fill"></i>'.html_safe, f %>
       </td>
     </tbody>
   </table>
