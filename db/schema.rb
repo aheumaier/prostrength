@@ -133,6 +133,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_145213) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "username", default: "", null: false
+    t.integer "training_sessions_count"
+    t.integer "role"
+    t.bigint "coach_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -143,6 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_145213) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_users_on_coach_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username"
@@ -168,7 +172,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_145213) do
   create_table "workouts", force: :cascade do |t|
     t.string "title"
     t.string "notes"
-    t.date "scheduled_at"
+    t.integer "training_sessions_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -179,6 +183,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_145213) do
   add_foreign_key "training_sessions", "plans"
   add_foreign_key "training_sessions", "users"
   add_foreign_key "training_sessions", "workouts"
+  add_foreign_key "users", "users", column: "coach_id"
   add_foreign_key "workout_sets", "exercises"
   add_foreign_key "workout_sets", "lifts"
   add_foreign_key "workout_sets", "pauses"

@@ -4,16 +4,17 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
-      <th>Created</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @workouts.each do |workout| %>
       <tr>
-        <%= render workout %>
+        <td><%= workout.title %></td>
         <td>
+          <% if current_user.coach? %>
+            <%= link_to '<i class="bi bi-pencil-square"></i>'.html_safe, edit_workout_path(workout) %>
+          <% end %>
           <%= link_to '<i class="bi bi-eye"></i>'.html_safe, workout %>
         </td>
       </tr>
@@ -21,7 +22,6 @@
   </tbody>
 </table>
 
-<br>
 <br>
 
 <div class="btn btn-outline-primary">

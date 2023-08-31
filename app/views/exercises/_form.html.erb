@@ -21,7 +21,8 @@
     <%= form.text_field :notes %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <br>
+  <div class="float-start">
+    <%= button_to "Create", @exercise, method: :update, :class => "btn btn-primary" %>
   </div>
 <% end %>

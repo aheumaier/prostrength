@@ -2,8 +2,6 @@
 
 <%= render "form", exercise: @exercise %>
 
-<br>
-
-<div>
-  <%= link_to "Back to exercises", exercises_path %>
+<div class="float-end">
+  <%= link_to "Back", exercises_path, class: "btn btn-outline-primary" %>
 </div>

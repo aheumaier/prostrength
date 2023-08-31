@@ -3,7 +3,7 @@ class CreateWorkouts < ActiveRecord::Migration[7.0]
     create_table :workouts do |t|
       t.string :title
       t.string :notes
-      t.date :scheduled_at
+      t.integer :training_sessions_count
 
 
 

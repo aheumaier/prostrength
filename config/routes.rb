@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     get 'home/index'
   end
 
+
+
   # http://localhost:3000/users/sign_in
   devise_for :users, path: 'users',
                      controllers: {
@@ -39,10 +41,11 @@ Rails.application.routes.draw do
   end
   get '/users', to: 'users/home#index', as: :users
 
-  # match '/users/:id', to: 'users#show', via: 'get'
+  match '/users/:id', to: 'users/home#show', via: 'get', as: :user
   # match '/users', to: 'users#index', via: 'get'
 
   resources :plans
+
   resources :training_sessions
   resources :workouts
   resources :exercises

@@ -1,15 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Exercises</h1>
 
-<div id="exercises">
+<div class="table-responsive">
   <table class="table">
     <theaders>
       <th>
         Name
-      </th>
-      <th>
-        Description 
       </th>
       <th>
       </th>
@@ -18,7 +13,6 @@
       <% @exercises.each do |exercise| %>
         <tr>
           <td><%= exercise.title%></td>
-          <td><%= exercise.notes %></td>
           <td>
             <%= link_to '<i class="bi bi-eye"></i>'.html_safe, exercise %>
           </td>
@@ -28,7 +22,7 @@
   </table>
 </div>
 
-<div class="btn btn-outline-primary">
+<div class="btn btn-outline-primary float-end">
   <i class="bi bi-plus" aria-hidden="true"></i>
   <%= link_to "New Exercise", new_exercise_path,  :class => "btn" %>
 </div>

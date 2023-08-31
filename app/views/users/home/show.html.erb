@@ -1,7 +1,11 @@
-<h1 class="text-3xl font-bold underline">
-  My Profile !
-</h1>
-
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Coach <%= current_user.coach.username %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= current_user.coach.email %></h6>
+    <p class="card-text">Since: <%= current_user.coach.profile.about_me %></p>
+  </div>
+</div>
+<br>
 <table class="table">
   <theaders>
     <th>

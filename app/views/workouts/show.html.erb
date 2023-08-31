@@ -1,47 +1,45 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Created</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <%= render @workout %>
-    </tr>
-  </tbody>
-</table>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @workout.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @workout.created_at %></h6>
+    <p class="card-text"><%= @workout.notes %></p>
+  </div>
+</div>
+
 <br>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Exercise</th>
-      <th>Weight(kg)</th>
-      <th>Repetitions</th>
-      <th>Tempo</th>
-      <th>Pause</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @workout.workout_sets.each do |set| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead class="table-dark">
       <tr>
-        <td><%= set.exercise.title %></td>
-        <td><%= set.lift.weight %></td>
-        <td><%= set.repetition.count %></td>
-        <td><%= set.tempo.duration %></td>
-        <td><%= set.pause.length %></td>
+        <th>Exercise</th>
+        <th>Weight(kg)</th>
+        <th>Repetitions</th>
+        <th>Tempo</th>
+        <th>Pause</th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+    <tbody>
+      <% @workout.workout_sets.each do |set| %>
+        <tr>
+          <td><%= set.exercise.title %></td>
+          <td><%= set.lift.weight %></td>
+          <td><%= set.repetition.count %></td>
+          <td><%= set.tempo.duration %></td>
+          <td><%= set.pause.length %></td>
+        </tr>
+      <% end %>
+    </tbody>
 
-</table>
-<br>
-
-<div>
-  <%= link_to "Edit", edit_workout_path(@workout), :class => "btn btn-outline-primary" %>
-  <%= link_to "Back", workouts_path, :class => "btn btn-outline-primary"%>
-
+  </table>
 </div>
 <br>
-<%= button_to "Delete", @workout, method: :delete, :class => "btn btn-danger" %>
+
+<div class="float-end">
+  <%= link_to '<i class="bi bi-pencil-square"></i>'.html_safe, edit_workout_path(@workout), :class => "btn btn-outline-primary" %>
+  <%= link_to '<i class="bi bi-arrow-return-left"></i>'.html_safe, workouts_path, :class => "btn btn-outline-primary"%>
+
+</div>
+
+<div class="float-start">
+  <%= button_to "Delete", @workout, method: :delete, :class => "btn btn-danger" %>
+</div>
