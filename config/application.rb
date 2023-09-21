@@ -20,5 +20,7 @@ module Prostrength
     # config.eager_load_paths << Rails.root.join("extras")
     #
     config.beginning_of_week = :monday
+
+    config.logger = Logger.new(STDOUT)
   end
 end

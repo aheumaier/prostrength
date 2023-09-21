@@ -1,0 +1,64 @@
+<div class="card border-light mb-3">
+  <div class="card-header">
+    <h5>My Workouts</h5>
+  </div>
+  <div class="card-body">
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="table-header">
+          <tr>
+            <td>Name</td>
+            <td>Trainings</td>
+            <td>Notes</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @my_workouts.each do |workout|%>
+            <tr>
+              <td><%= workout.title %></td>
+              <td><%= workout.training_sessions.size %></td>
+              <td><%= workout.notes %></td>
+
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="btn btn-outline-primary float-end">
+      <i class="bi bi-plus" aria-hidden="true"></i>
+      <%= link_to "New Workout", new_workout_path,  :class => "btn" %>
+    </div>
+
+  </div>
+  <br>
+</div>
+<br>
+<div class="card border-light mb-3">
+  <div class="card-header">
+    <h5>Clients</h5>
+  </div>
+  <div class="card-body">
+
+    <div class="row row-cols-1 row-cols-md-3">
+
+      <% @customers.each do |customer|%>
+        <div class="col mb-4">
+
+          <div class="card border-light mb-3">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"><%= customer.username %></text></svg>
+            <div class="card-body">
+              <h5 class="card-title"><%= customer.username %></h5>
+              <%= customer.email %><br>
+              <%= customer.training_sessions.size %> Trainings
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+    <br>
+  </div>
+</div>

@@ -3,8 +3,6 @@ Rails.application.routes.draw do
     get 'home/index'
   end
 
-
-
   # http://localhost:3000/users/sign_in
   devise_for :users, path: 'users',
                      controllers: {
@@ -49,10 +47,6 @@ Rails.application.routes.draw do
   resources :training_sessions
   resources :workouts
   resources :exercises
-  resources :pauses
-  resources :tempos
-  resources :repetitions
-  resources :lifts
   resources :workout_sets
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

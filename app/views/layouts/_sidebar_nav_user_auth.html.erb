@@ -10,25 +10,27 @@
         </a>
       </li>
       <li>
-        <a href="/training_sessions" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-          <i class="bi-speedometer2 fs-1"></i>
-        </a>
-      </li>
-      <li>
-        <a href="/workouts" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Workouts">
+        <a href="/training_sessions" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Trainings">
           <i class="bi-table fs-1"></i>
         </a>
       </li>
-      <li>
-        <a href="/exercises" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Exercises">
-          <i class="bi-heart fs-1"></i>
-        </a>
-      </li>
-      <li>
-        <a href="/users" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community">
-          <i class="bi-people fs-1"></i>
-        </a>
-      </li>
+      <% if current_user.coach? %>
+        <li>
+          <a href="/metrics" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Metrics">
+            <i class="bi-speedometer2 fs-1"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/exercises" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Exercises">
+            <i class="bi-heart fs-1"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/users" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Community">
+            <i class="bi-people fs-1"></i>
+          </a>
+        </li>
+      <% end %>
     </ul>
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">

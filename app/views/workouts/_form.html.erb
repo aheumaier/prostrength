@@ -1,18 +1,11 @@
-<div>
-  <%= f.label :title, class: "form-label"  %>
-  <%= f.text_field :title, class: "form-control"  %>
+<div class="mb-3">
+  <%= f.label :title,{ class: "form-label"}  %>
+  <%= f.text_field :title, {class: 'form-control ' } %>
 </div>
 
-<div>
-  <%= f.label :notes, class: "form-label"  %>
-  <%= f.text_area :notes, class: "form-control" %>
+<div class="mb-3">
+  <%= f.label :notes, {class: "form-label"}  %>
+  <%= f.text_area :notes,{ class: 'form-control' }%>
 </div>
 
-<div>
-  <%= f.label :scheduled_at, class: "form-label"  %>
-  <%= f.datetime_select :start_time, class: "form-control" %>
-</div>
 <br>
-<div class="float-start">
-  <%= button_to "Create", @workout, method: :update, :class => "btn btn-primary" %>
-</div>

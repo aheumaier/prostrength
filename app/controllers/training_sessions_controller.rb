@@ -5,6 +5,7 @@ class TrainingSessionsController < ApplicationController
   # GET /training_sessions or /training_sessions.json
   def index
     @training_sessions = TrainingSession.all
+    @trainings = current_user.training_sessions
   end
 
   # GET /training_sessions/1 or /training_sessions/1.json

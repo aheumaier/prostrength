@@ -5,6 +5,7 @@ class WorkoutsController < ApplicationController
   # GET /workouts or /workouts.json
   def index
     @workouts = Workout.all
+    @my_workouts = @workouts.where(user_id: current_user.id)
   end
 
   # GET /workouts/1 or /workouts/1.json
@@ -13,7 +14,7 @@ class WorkoutsController < ApplicationController
   # GET /workouts/new
   def new
     @workout = Workout.new
-    @workout.workout_sets.build
+    @workout_sets = @workout.workout_sets.build
   end
 
   # GET /workouts/1/edit
@@ -21,7 +22,9 @@ class WorkoutsController < ApplicationController
 
   # POST /workouts or /workouts.json
   def create
-    @workout = Workout.new(workout_params)
+    create_params = workout_params # create temp var to modify workout_params
+    validate_or_update_strings_in_id_params(create_params) # modify params through temp var
+    @workout = Workout.new(create_params)
 
     respond_to do |format|
       if @workout.save
@@ -37,7 +40,9 @@ class WorkoutsController < ApplicationController
   # PATCH/PUT /workouts/1 or /workouts/1.json
   def update
     respond_to do |format|
-      if @workout.update(workout_params)
+      create_params = workout_params # create temp var to modify workout_params
+      validate_or_update_strings_in_id_params(create_params) # modify params through temp var
+      if @workout.update(create_params)
         format.html { redirect_to workout_url(@workout), notice: 'Workout was successfully updated.' }
         format.json { render :show, status: :ok, location: @workout }
       else
@@ -64,28 +69,31 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+  # Only allow a list of trusted parameters through
   def workout_params
     params.require(:workout).permit([
                                       :title,
                                       :notes,
-                                      :workout_id,
-                                      :exercise_id,
-                                      :lift_id,
-                                      :repetition_id,
-                                      :tempo_id,
-                                      :pause_id,
                                       { workout_sets_attributes: %i[
                                         id
                                         _destroy
                                         workout_id
                                         exercise_id
-                                        lift_id
-                                        repetition_id
-                                        tempo_id
-                                        pause_id
+                                        repetition
+                                        tempo
+                                        pause
                                       ] }
 
                                     ])
+  end
+
+  def validate_or_update_strings_in_id_params(create_params)
+    create_params[:workout_sets_attributes].each do |_k, set_params|
+      if set_params[:exercise_id].is_a?(String)
+        create_params[:workout_sets_attributes][_k][:exercise_id] =
+          Exercise.find_or_create_by(title: set_params[:exercise_id]).id
+      end
+    end
+    logger.info create_params[:workout_sets_attributes]
   end
 end

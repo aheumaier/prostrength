@@ -76,18 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_145213) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lifts", force: :cascade do |t|
-    t.integer "weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "pauses", force: :cascade do |t|
-    t.integer "length"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "plans", force: :cascade do |t|
     t.string "title"
     t.date "start"
@@ -103,18 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_145213) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
-  create_table "repetitions", force: :cascade do |t|
-    t.integer "count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tempos", force: :cascade do |t|
-    t.string "duration"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "training_sessions", force: :cascade do |t|
@@ -155,23 +131,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_145213) do
   create_table "workout_sets", force: :cascade do |t|
     t.bigint "workout_id", null: false
     t.bigint "exercise_id", null: false
-    t.bigint "lift_id", null: false
-    t.bigint "repetition_id", null: false
-    t.bigint "tempo_id", null: false
-    t.bigint "pause_id", null: false
+    t.integer "repetition"
+    t.integer "tempo"
+    t.integer "pause"
+    t.string "series"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exercise_id"], name: "index_workout_sets_on_exercise_id"
-    t.index ["lift_id"], name: "index_workout_sets_on_lift_id"
-    t.index ["pause_id"], name: "index_workout_sets_on_pause_id"
-    t.index ["repetition_id"], name: "index_workout_sets_on_repetition_id"
-    t.index ["tempo_id"], name: "index_workout_sets_on_tempo_id"
     t.index ["workout_id"], name: "index_workout_sets_on_workout_id"
   end
 
   create_table "workouts", force: :cascade do |t|
     t.string "title"
     t.string "notes"
+    t.integer "created_by"
+    t.integer "modified_by"
     t.integer "training_sessions_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -185,9 +159,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_145213) do
   add_foreign_key "training_sessions", "workouts"
   add_foreign_key "users", "users", column: "coach_id"
   add_foreign_key "workout_sets", "exercises"
-  add_foreign_key "workout_sets", "lifts"
-  add_foreign_key "workout_sets", "pauses"
-  add_foreign_key "workout_sets", "repetitions"
-  add_foreign_key "workout_sets", "tempos"
   add_foreign_key "workout_sets", "workouts"
 end

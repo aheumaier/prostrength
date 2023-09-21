@@ -12,7 +12,6 @@
     <thead class="table-dark">
       <tr>
         <th>Exercise</th>
-        <th>Weight(kg)</th>
         <th>Repetitions</th>
         <th>Tempo</th>
         <th>Pause</th>
@@ -22,10 +21,9 @@
       <% @workout.workout_sets.each do |set| %>
         <tr>
           <td><%= set.exercise.title %></td>
-          <td><%= set.lift.weight %></td>
-          <td><%= set.repetition.count %></td>
-          <td><%= set.tempo.duration %></td>
-          <td><%= set.pause.length %></td>
+          <td><%= set.repetition %></td>
+          <td><%= set.tempo %></td>
+          <td><%= set.pause %></td>
         </tr>
       <% end %>
     </tbody>

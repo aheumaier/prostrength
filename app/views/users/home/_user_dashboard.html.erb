@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Coach <%= current_user.coach.username %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= current_user.coach.email %></h6>
+    <p class="card-text">Since: <%= current_user.coach.profile.about_me %></p>
+  </div>
+</div>
+<br>
+<br>
+
+<div class="btn btn-outline-primary float-end">
+  <i class="bi bi-plus" aria-hidden="true"></i>
+  <%= link_to "New Training", new_training_session_path,  :class => "btn" %>
+</div>

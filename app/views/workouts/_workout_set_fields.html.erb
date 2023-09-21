@@ -1,35 +1,39 @@
 <div class="nested-fields">
-  <table class="table table-striped">
+  <table class="table">
     <thead>
-      <tr>
-      </tr>
+      <tr></tr>
     </thead>
     <tbody >
       <td>
-        <%= f.label :exercise_id, style: "display: block" %>
+        <div class="mb-3">
 
-        <%= f.text_field :exercise_id, list: 'excercise-name' %>
-        <datalist id="excercise-name">
-          <% Exercise.all.each do |exercise| %>
-            <option value="<%= exercise.title %>"></option>
-          <% end %>
-        </datalist>
+          <%= f.label :exercise_id,{ class: "form-label"} %>
+          <%= f.text_field :exercise_id, list: 'excercises_autocomplete', data: { action: 'input->autocompletion#autocomplete'}, class: 'form-control'%>
+          <datalist id="excercises_autocomplete">
+            <% Exercise.all.each do |exercise|%>
+              <option value="<%= exercise.title %>" ></option>
+
+            <%end%>
+          </datalist>
+        </div>
       </td>
       <td>
-        <%= f.label :lift_id, style: "display: block" %>
-        <%= f.collection_select :lift_id, Lift.all, :id, :weight %>
+        <div class="mb-3">
+          <%= f.label :repetition,{ class: "form-label"} %>
+          <%= f.text_field :repetition, {class: 'form-select' } %>
+        </div>
       </td>
       <td>
-        <%= f.label :repetition_id, style: "display: block" %>
-        <%= f.collection_select :repetition_id, Repetition.all, :id, :count %>
+        <div class="mb-3">
+          <%= f.label :tempo,{ class: "form-label"} %>
+          <%= f.text_field :tempo, {class: 'form-select' } %>
+        </div>
       </td>
       <td>
-        <%= f.label :tempo_id, style: "display: block" %>
-        <%= f.collection_select :tempo_id, Tempo.all, :id, :duration %>
-      </td>
-      <td>
-        <%= f.label :pause_id, style: "display: block" %>
-        <%= f.collection_select :pause_id, Pause.all, :id, :length %>
+        <div class="mb-3">
+          <%= f.label :pause,{ class: "form-label"} %>
+          <%= f.text_field :pause, {class: 'form-select' } %>
+        </div>
       </td>
       <td>
         <%= link_to_remove_association '<i class="bi bi-dash-circle-fill"></i>'.html_safe, f %>

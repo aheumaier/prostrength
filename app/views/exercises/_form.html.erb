@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title class: "form-label" %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, {class: "form-label"}  %>
+    <%= form.text_field :title,{ class: 'form-control' }%>
   </div>
 
-  <div>
-    <%= form.label :notes, class: "form-label" %>
-    <%= form.text_area :notes %>
+  <div class="mb-3">
+    <%= form.label :notes, {class: "form-label"}  %>
+    <%= form.text_area :notes,{ class: 'form-control' }%>
   </div>
 
   <br>

@@ -1,5 +1,5 @@
 class WorkoutSetsController < ApplicationController
-  before_action :set_workout_set, only: %i[ show edit update destroy ]
+  before_action :set_workout_set, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   # GET /workout_sets or /workout_sets.json
@@ -8,8 +8,7 @@ class WorkoutSetsController < ApplicationController
   end
 
   # GET /workout_sets/1 or /workout_sets/1.json
-  def show
-  end
+  def show; end
 
   # GET /workout_sets/new
   def new
@@ -17,8 +16,7 @@ class WorkoutSetsController < ApplicationController
   end
 
   # GET /workout_sets/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /workout_sets or /workout_sets.json
   def create
@@ -27,7 +25,7 @@ class WorkoutSetsController < ApplicationController
 
     respond_to do |format|
       if @workout_set.save
-        format.html { redirect_to workout_set_url(@workout_set), notice: "Workout set was successfully created." }
+        format.html { redirect_to workout_set_url(@workout_set), notice: 'Workout set was successfully created.' }
         format.json { render :show, status: :created, location: @workout_set }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +38,7 @@ class WorkoutSetsController < ApplicationController
   def update
     respond_to do |format|
       if @workout_set.update(workout_set_params)
-        format.html { redirect_to workout_set_url(@workout_set), notice: "Workout set was successfully updated." }
+        format.html { redirect_to workout_set_url(@workout_set), notice: 'Workout set was successfully updated.' }
         format.json { render :show, status: :ok, location: @workout_set }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,19 +52,20 @@ class WorkoutSetsController < ApplicationController
     @workout_set.destroy
 
     respond_to do |format|
-      format.html { redirect_to workout_sets_url, notice: "Workout set was successfully destroyed." }
+      format.html { redirect_to workout_sets_url, notice: 'Workout set was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_workout_set
-      @workout_set = WorkoutSet.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def workout_set_params
-      params.require(:workout_set).permit(:workout_id, :exercise_id, :lift_id, :repetition_id, :tempo_id, :pause_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_workout_set
+    @workout_set = WorkoutSet.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def workout_set_params
+    params.require(:workout_set).permit(:workout_id, :exercise_id, :lift_id, :repetition_id, :tempo_id, :pause_id)
+  end
 end

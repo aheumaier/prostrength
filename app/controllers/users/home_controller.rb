@@ -3,7 +3,10 @@ module Users
     # GET /users/
     def index
       @trainings = current_user.training_sessions
-      @customers = current_user.customers if current_user.coach?
+      return unless current_user.coach?
+
+      @customers = current_user.customers
+      @my_workouts = Workout.where(created_by: 1)
     end
 
     # GET /users/1 or /users/1.json

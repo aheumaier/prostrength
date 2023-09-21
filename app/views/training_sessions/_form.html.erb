@@ -11,25 +11,24 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :workout_id, class: "form-label" %>
-    <%= form.collection_select :workout_id, Workout.all, :id, :title, :class => 'form-control' %>
+  <div class="mb-3">
+    <%= form.label :workout_id, class: 'form-label' %>
+    <%= form.collection_select :workout_id, Workout.all, :id, :title, { promt: "Select a Workout"}, { class: 'form-select'} %>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :plan_id, class: "form-label" %>
-    <%= form.collection_select :plan_id, Plan.all, :id, :title, :class => 'form-control' %>
+    <%= form.collection_select :plan_id, Plan.all, :id, :title, { promt: "Select a Workout"}, { class: 'form-select'} %>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :user_id, class: "form-label" %>
-
-    <%= form.collection_select :user_id, User.all.order(:username), :id, :username, :class => "form-control-plaintext", default: :current_user %>
+    <%= form.collection_select :user_id, User.all.order(:username), :id, :username, { promt: "Select a Workout", default: :current_user }, { class: 'form-select disabled'} %>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :start_time, class: "form-label" %>
-    <%= form.datetime_select :start_tim, :class => 'form-control' %>
+    <%= form.datetime_select :start_time, as: :date, html5: true, :class => 'form-control' %>
   </div>
   <br>
 

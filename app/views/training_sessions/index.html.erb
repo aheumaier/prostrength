@@ -1,34 +1,55 @@
-<h1>Trainings</h1>
+<h1>Training Planer</h1>
 
-<div class="table-reponsive">
-  <table class="table">
-    <thead class="table-dark">
-      <tr>
-        <th>Scheduled</th>
-        <th>Workout</th>
-        <th>Plan</th>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @training_sessions.each do |tr| %>
-        <tr>
-          <td><%= tr.start_time %></td>
-          <td><%= tr.workout.title %></td>
-          <td><%= tr.plan.title %></td>
-          <td>
-            <% if current_user.coach? %>
-              <%= link_to '<i class="bi bi-pencil-square"></i>'.html_safe, edit_training_session_path(tr) %>
-            <% end %>
-            <%= link_to '<i class="bi bi-eye"></i>'.html_safe, tr %>
-          </td>
+<br>
 
-        </tr>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Calendar</h5>
+    <%= week_calendar(events: @trainings ) do |date, trainings| %>
+      <%= date.to_formatted_s(:short) %>
+      <br>
+      <% trainings.each do |tr| %>
+        <b><%= link_to tr.workout.title, training_session_path(tr) %></b><br>
       <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </div>
 </div>
 
+<br>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Trainings</h5>
+    <div class="table-reponsive">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th>Scheduled</th>
+            <th>Workout</th>
+            <th>Plan</th>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @training_sessions.each do |tr| %>
+            <tr>
+              <td><%= tr.start_time %></td>
+              <td><%= tr.workout.title %></td>
+              <td><%= tr.plan.title %></td>
+              <td>
+                <% if current_user.coach? %>
+                  <%= link_to '<i class="bi bi-pencil-square"></i>'.html_safe, edit_training_session_path(tr) %>
+                <% end %>
+                <%= link_to '<i class="bi bi-eye"></i>'.html_safe, tr %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
 <div class="btn btn-outline-primary float-end">
   <i class="bi bi-plus" aria-hidden="true"></i>
   <%= link_to "New Training", new_training_session_path,  :class => "btn" %>
