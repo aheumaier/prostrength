@@ -6,7 +6,7 @@
 
   <p>
     <strong>Exercise:</strong>
-    <%= workout_set.exercise_id %>
+    <%= Exercise.find_by(workout_set.exercise_id).title %>
   </p>
 
   <p>

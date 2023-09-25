@@ -1,6 +1,7 @@
 class Workout < ApplicationRecord
-  audited
   # attr_accessible :title, :notes
+
+  GRIPS = %w[none pronated suppinated narrow wide]
 
   has_many :workout_sets, dependent: :destroy
   has_many :exercises, through: :workout_sets

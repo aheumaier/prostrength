@@ -4,30 +4,36 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts or /workouts.json
   def index
-    @workouts = Workout.all.includes(:audits)
-    # @workout.audits.last.user.username
-    @my_workouts = @workout.audits.where(user_id: current_user.id)
+    @workouts = Workout.all
+    @users = User.all
+    @my_workouts = @workouts.where(created_by: current_user.id)
   end
 
   # GET /workouts/1 or /workouts/1.json
-  def show; end
+  def show
+    # @workout = Workout.find(params[:id])
+    @creator = User.find(@workout.created_by)
+  end
 
   # GET /workouts/new
   def new
     @workout = Workout.new
     @workout_sets = @workout.workout_sets.build
-    @grips = %w[none pronated suppinated narrow wide]
   end
 
   # GET /workouts/1/edit
-  def edit; end
+  def edit
+    @exercise_name = Exercise.find_by(id: params[:exercise_id])
+  end
 
   # POST /workouts or /workouts.json
   def create
     create_params = workout_params # create temp var to modify workout_params
     validate_or_update_strings_in_id_params(create_params) # modify params through temp var
     @workout = Workout.new(create_params)
-    @grips = %w[none pronated suppinated narrow wide]
+
+    u = current_user
+    @workout.created_by = u.id
 
     respond_to do |format|
       if @workout.save
@@ -45,6 +51,9 @@ class WorkoutsController < ApplicationController
     respond_to do |format|
       create_params = workout_params # create temp var to modify workout_params
       validate_or_update_strings_in_id_params(create_params) # modify params through temp var
+
+      u = current_user
+      @workout.modified_by = u.id
       if @workout.update(create_params)
         format.html { redirect_to workout_url(@workout), notice: 'Workout was successfully updated.' }
         format.json { render :show, status: :ok, location: @workout }
