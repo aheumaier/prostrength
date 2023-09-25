@@ -4,8 +4,9 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts or /workouts.json
   def index
-    @workouts = Workout.all
-    @my_workouts = @workouts.where(user_id: current_user.id)
+    @workouts = Workout.all.includes(:audits)
+    # @workout.audits.last.user.username
+    @my_workouts = @workout.audits.where(user_id: current_user.id)
   end
 
   # GET /workouts/1 or /workouts/1.json
@@ -15,6 +16,7 @@ class WorkoutsController < ApplicationController
   def new
     @workout = Workout.new
     @workout_sets = @workout.workout_sets.build
+    @grips = %w[none pronated suppinated narrow wide]
   end
 
   # GET /workouts/1/edit
@@ -25,6 +27,7 @@ class WorkoutsController < ApplicationController
     create_params = workout_params # create temp var to modify workout_params
     validate_or_update_strings_in_id_params(create_params) # modify params through temp var
     @workout = Workout.new(create_params)
+    @grips = %w[none pronated suppinated narrow wide]
 
     respond_to do |format|
       if @workout.save
@@ -79,6 +82,8 @@ class WorkoutsController < ApplicationController
                                         _destroy
                                         workout_id
                                         exercise_id
+                                        grip
+                                        series
                                         repetition
                                         tempo
                                         pause

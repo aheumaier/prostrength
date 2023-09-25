@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title"><%= @workout.title %></h5>
-    <h6 class="card-subtitle mb-2 text-muted"><%= @workout.created_at %></h6>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @workout.audits.last.user.username %></h6>
     <p class="card-text"><%= @workout.notes %></p>
   </div>
 </div>
@@ -12,6 +12,8 @@
     <thead class="table-dark">
       <tr>
         <th>Exercise</th>
+        <th>Series</th>
+        <th>Grip</th>
         <th>Repetitions</th>
         <th>Tempo</th>
         <th>Pause</th>
@@ -21,6 +23,8 @@
       <% @workout.workout_sets.each do |set| %>
         <tr>
           <td><%= set.exercise.title %></td>
+          <td><%= set.series %></td>
+          <td><%= set.grip %></td>
           <td><%= set.repetition %></td>
           <td><%= set.tempo %></td>
           <td><%= set.pause %></td>

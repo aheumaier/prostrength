@@ -16,10 +16,13 @@ class WorkoutSetsController < ApplicationController
   end
 
   # GET /workout_sets/1/edit
-  def edit; end
+  def edit
+    @grips = %w[none pronated suppinated narrow wide]
+  end
 
   # POST /workout_sets or /workout_sets.json
   def create
+    @grips = %w[none pronated suppinated narrow wide]
     @workout_set = WorkoutSet.first_or_create_by(workout_set_params)
     # @workout_set = WorkoutSet.new(workout_set_params)
 
@@ -66,6 +69,6 @@ class WorkoutSetsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def workout_set_params
-    params.require(:workout_set).permit(:workout_id, :exercise_id, :lift_id, :repetition_id, :tempo_id, :pause_id)
+    params.require(:workout_set).permit(:workout_id, :exercise_id, :series, :grip, :repetition_id, :tempo_id, :pause_id)
   end
 end

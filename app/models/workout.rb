@@ -1,4 +1,5 @@
 class Workout < ApplicationRecord
+  audited
   # attr_accessible :title, :notes
 
   has_many :workout_sets, dependent: :destroy

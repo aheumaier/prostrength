@@ -7,6 +7,7 @@ class CreateWorkoutSets < ActiveRecord::Migration[7.0]
       t.integer :tempo
       t.integer :pause
       t.string :series
+      t.string :grip
 
       t.timestamps
     end

@@ -22,6 +22,16 @@
   </div>
 
   <div>
+    <%= form.label :series, style: "display: block" %>
+    <%= form.text_field :series %>
+  </div>
+
+  <div>
+    <%= form.label :grip, style: "display: block" %>
+    <%= form.collection_select :day, @grips, :to_s, :to_s, include_blank: false %>
+  </div>
+
+  <div>
     <%= form.label :repetition_id, style: "display: block" %>
     <%= form.text_field :repetition_id %>
   </div>

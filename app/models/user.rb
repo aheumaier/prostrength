@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  enum role: [:user, :coach]
+  audited
+
+  enum role: %i[user coach]
   after_initialize :set_default_role, if: :new_record?
 
   def set_default_role
@@ -10,8 +12,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
-
-
 
   has_many :training_sessions
   has_many :plans, through: :training_sessions
