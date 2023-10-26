@@ -26,7 +26,7 @@
       <td>
         <div class="mb-3">
           <%= f.label :grip, { class: "form-label"} %>
-          <%= f.collection_select :grip, Workout::GRIPS, :to_s, :to_s, { promt: "Select a grip", include_blank: false,}, { class: 'form-select'} %>
+          <%= f.collection_select :grip, WorkoutSet::GRIPS, :to_s, :to_s, { promt: "Select a grip", include_blank: false,}, { class: 'form-select'} %>
         </div>
       </td>
       <td>

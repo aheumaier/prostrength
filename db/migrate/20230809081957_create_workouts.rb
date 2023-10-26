@@ -5,7 +5,7 @@ class CreateWorkouts < ActiveRecord::Migration[7.0]
       t.string :notes
       t.integer :created_by
       t.integer :modified_by
-      t.integer :training_sessions_counts
+      t.integer :training_sessions_count, default: 0
 
       t.timestamps
     end

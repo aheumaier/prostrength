@@ -21,6 +21,6 @@ module Prostrength
     #
     config.beginning_of_week = :monday
 
-    config.logger = Logger.new(STDOUT)
+    # config.logger = Logger.new(STDOUT)
   end
 end

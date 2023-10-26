@@ -3,15 +3,13 @@
 one:
   workout: one
   exercise: one
-  lift: one
-  repetition: one
-  tempo: one
-  pause: one
+  repetition: 10
+  tempo: 302
+  pause: 120
 
 two:
   workout: two
   exercise: two
-  lift: two
-  repetition: two
-  tempo: two
-  pause: two
+  repetition: 10
+  tempo: 101
+  pause: 60
