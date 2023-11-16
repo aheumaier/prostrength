@@ -22,5 +22,10 @@ module Prostrength
     config.beginning_of_week = :monday
 
     # config.logger = Logger.new(STDOUT)
+    #
+    #
+    # config.action_controller.use_custom_csrf_token = lambda do |request|
+    #   request.cookies['csrf_token'] = Encryption.encrypt(request.session[:_csrf_token])
+    # end
   end
 end
